@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Botões com mudança de tela e posição</title>
+    <style>
+        body {
+            text-align: center;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        #noButton {
+            position: absolute;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="screen1">
+        <h1>MANDA NUDE PRA MIM</h1>
+        <button id="yesButton">Sim</button>
+        <button id="noButton">Não</button>
+    </div>
+
+    <div id="screen2" class="hidden">
+        <h1>tmj parcera é nois na caminhada</h1>
+    </div>
+
+    <script>
+        const yesButton = document.getElementById('yesButton');
+        const noButton = document.getElementById('noButton');
+        const screen1 = document.getElementById('screen1');
+        const screen2 = document.getElementById('screen2');
+
+        noButton.addEventListener('mouseover', function() {
+            const bodyWidth = document.body.clientWidth;
+            const bodyHeight = document.body.clientHeight;
+
+            const newX = Math.random() * (bodyWidth - 100);
+            const newY = Math.random() * (bodyHeight - 40);
+
+            noButton.style.left = newX + 'px';
+            noButton.style.top = newY + 'px';
+        });
+
+        yesButton.addEventListener('click', function() {
+            screen1.classList.add('hidden');
+            screen2.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
